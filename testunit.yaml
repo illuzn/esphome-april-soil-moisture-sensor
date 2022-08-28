@@ -1,0 +1,8 @@
+substitutions:
+  device_name: testunit
+  run_duration: 24h
+  sleep_duration: 1s
+
+logger:
+  level: verbose
+<<: !include default-template.yaml
