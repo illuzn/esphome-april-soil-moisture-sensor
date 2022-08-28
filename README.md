@@ -40,7 +40,9 @@ You can duplicate `testunit.yaml` as many times as you wish just remember to cha
 
 ## To do
 
-Automate OTA updates to the device. This isn't a priority for me since the device is mostly set and forget.
+1. Enable the temperature sensor.
+2. Calibrate the moisture reading with temperature.
+3. Automate OTA updates to the device. This isn't a priority for me since the device is mostly set and forget.
 
 ## Upstream Issues
 
