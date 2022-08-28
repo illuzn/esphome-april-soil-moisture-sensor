@@ -49,3 +49,7 @@ You can duplicate `testunit.yaml` as many times as you wish just remember to cha
 If you are messing with the yaml configurations outside of changing the presets in `testunit.yaml` and `secrets.yaml` you may encounter some build errors. This appears to be an upstream issue in ESPHome that can be resolved using the "Clean Build Files".
 
 ## Acknowledgements
+
+Volta: [The original inspiration for building this.](https://github.com/volca/april-soil-esphome-module)
+[Hrisko, J. (2020). Capacitive Soil Moisture Sensor Calibration with Arduino. Maker Portal.](https://makersportal.com/blog/2020/5/26/capacitive-soil-moisture-calibration-with-arduino)
+[Kizito, F. et al (2008) Frequency, electrical conductivity and temperature analysis of a low-cost capacitance soil moisture sensor](https://www.sciencedirect.com/science/article/abs/pii/S0022169408000462)
