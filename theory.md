@@ -8,15 +8,15 @@ A 1.5MHz PWM signal with a 34% duty cycle is output to the probe via pin 17. The
 
 ![33% PWM Waveform](pwm_33_percent.png)
 
-N.B. The period will be `1s / 1.5 million = 6.7 x 10^-7s` and the pulse width witll be `1s /1.5 million x 34% = 2.3x10^-7s`.
+N.B. The period will be `1s / 1.5 million = 6.7 x 10^-7s` and the pulse width will be `1s /1.5 million x 34% = 2.3x10^-7s`.
 
 The selection of the frequency is important. The papers all agree that a higher frequency is recommended especially to reduce the difference that the soil type makes (e.g. coconut coir vs clay vs sand, etc.). The scientific paper I consulted suggested 70MHz however other papers suggest that 500MHz is required.
 
 In any event, the ESP32 can output a maximum frequency of 40MHz but at this frequency the output is very inaccurate (i.e. the readings will vary widely even in the same soil medium). I have chosen 1.5MHz because in my short term testing that was the highest frequency that was reasonably stable and accurate. There is potentially some optimisation possible because there would be [an optimal frequency allowing for maximum bit depth in that range of frequency](https://www.esphome.io/components/output/ledc.html). However, in my short term testing 1.5MHz seemed relatively suitable - note this device is not intended for scientific testing but more to provide a relative range whereby automated irrigation can be turned on.
 
-A 34% duty cycle is selected because the ESP32's ADC is capable of measuring voltages upto ~1.1V. Using an output voltage of 3.3V, a 34% duty cycle should give a maximum resultant voltage of around 1.1V. This resultant voltage would only occur if the sensing wires of the probe were shorted together (which shouldn't be possible). Accordingly, given that air, soil and water are far from ideal dielectrics (see below) we expect resultant voltages far below this.
+A 34% duty cycle is selected because the ESP32's ADC is capable of measuring voltages upto ~1.1V. Using an output voltage of 3.3V, a 34% duty cycle should give a maximum resultant voltage of around 1.1V. This resultant voltage would only occur if the sensing wires of the probe were shorted together by a perfect capacitor (which shouldn't be possible). Accordingly, given that air, soil and water are far from ideal dielectrics (see below) we expect resultant voltages far below this.
 
-## Dielectric effect.
+## Dielectric effect
 
 We expect that the two probe wires which are seperated by a 2mm gap should function as a capacitor (even in air) due to the dielectric effect. This is because when a voltage difference is applied to the two probe wires we expect charge seperation to occur and for there to be a net flow of electrons to the negative wire and away from the positive wire.
 

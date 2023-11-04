@@ -1,6 +1,6 @@
 # ESPhome for April Soil Moisture Sensor
 
-This repository is an ESPHome configuration for the [April Soil Moisture Sensor](https://wiki.aprbrother.com/en/april_soil_moisture_sensor.html)
+This repository is an ESPHome configuration for the [April Soil Moisture Sensor](https://wiki.aprbrother.com/en/april_soil_moisture_sensor.html). This is primarily designed to work with HomeAssistant; however with a little tweaking it can report anywhere that ESPHome is able to report.
 
 ## Goals
 
@@ -12,13 +12,13 @@ The primary goals of this project are:
 
 ## Files
 
-**default-template.yaml**: This file is the reusable template for all of your sensors.
-**testunit.yaml**: An example configuration for one of your sensors.
-**secrets.yaml**: An example of the secrets which contain passwords etc. Complete with your actual passwords.
+- **default-template.yaml**: This file is the reusable template for all of your sensors.
+- **testunit.yaml**: An example configuration for one of your sensors.
+- **secrets.yaml**: An example of the secrets which contain passwords etc. Complete with your actual passwords.
 
 ## Usage
 
-1. Install ESPHome e.g. `docker pull esphome/esphome`
+1. Install ESPHome e.g. `docker pull esphome/esphome` (Tested and working upto v2022.11.5 - there are some issues with v2022.12.* and v2022.2.* bootlooping)
 2. Copy `default-template.yaml`, `testunit.yaml` and `secrets.yaml` to your ESPHome folder e.g. on HomeAssistant this is `/config/esphome/`
 3. Configure your `secrets.yaml`
 4. Install firmware. Click the dropdown next to testunit and install. N.B. Do not install the default-template it will fail (it is only the template configuration).
@@ -42,11 +42,14 @@ You can duplicate `testunit.yaml` as many times as you wish just remember to cha
 
 1. Enable the temperature sensor.
 2. Calibrate the moisture reading with temperature.
-3. Automate OTA updates to the device. This isn't a priority for me since the device is mostly set and forget.
+3. Calibrate the moisture reading with battery voltage. Theoretically the lower the voltage the lower the moisture reading.
+4. Automate OTA updates to the device. This isn't a priority for me since the device is mostly set and forget.
 
 ## Upstream Issues
 
 If you are messing with the yaml configurations outside of changing the presets in `testunit.yaml` and `secrets.yaml` you may encounter some build errors. This appears to be an upstream issue in ESPHome that can be resolved using the "Clean Build Files".
+
+This build will fail on ARM architectures (e.g. Raspberry Pi) because the upstream esp-idf in platformio hasn't been built for AArch64 as of writing (February 23).
 
 ## Acknowledgements
 
