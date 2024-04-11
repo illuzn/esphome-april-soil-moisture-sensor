@@ -2,6 +2,8 @@ substitutions:
   device_name: testunit
   run_duration: 24h
   sleep_duration: 1s
+  minimum_raw_value: 3800
+  maximum_raw_value: 6800
 
 logger:
   level: verbose
