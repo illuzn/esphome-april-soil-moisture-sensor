@@ -29,6 +29,17 @@ wifi:
     ssid: "Fallback Hotspot"
     password: !secret fallback_password
 
+# Set up the minimum and maximum values for calculating moisture %
+globals:
+   - id: minimumRawValue
+     type: float
+     restore_value: no
+     initial_value: $minimum_raw_value
+   - id: maximumRawValue
+     type: float
+     restore_value: no
+     initial_value: $maximum_raw_value
+
 sensor:
   - platform: adc
     pin: 7
@@ -88,14 +99,14 @@ sensor:
     accuracy_decimals: 0
     lambda: |-
       float x = id(rMoisture).state;
-      if (x < 3800) {
-        x = 3800;
+      if (x < id(minimumRawValue)) {
+        x = id(minimumRawValue);
       }
-      if (x > 6800) {
-        x = 6800;
-      } 
-      float y = (x - 3800) / 3000 * 100;
-      y = 100 - y;
+      if (x > id(maximumRawValue)) {
+        x = id(maximumRawValue);
+      }
+      float z = id(minimumRawValue) - id(maximumRawValue)
+      float y = (x - id(minimumRawValue)) / z * 100;
       return y;
 
 # average over 5 readings to smooth
