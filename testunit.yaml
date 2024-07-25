@@ -4,7 +4,7 @@ substitutions:
   sleep_duration: 1s
   minimum_raw_value: '3800'
   maximum_raw_value: '6800'
-
+  temperature_offset: '0'
 logger:
   level: verbose
 <<: !include default-template.yaml
