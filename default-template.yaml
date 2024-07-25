@@ -105,7 +105,7 @@ sensor:
       if (x > id(maximumRawValue)) {
         x = id(maximumRawValue);
       }
-      float z = id(minimumRawValue) - id(maximumRawValue)
+      float z = id(minimumRawValue) - id(maximumRawValue);
       float y = (x - id(minimumRawValue)) / z * 100;
       return y;
 

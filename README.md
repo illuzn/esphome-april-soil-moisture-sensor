@@ -18,7 +18,7 @@ The primary goals of this project are:
 
 ## Usage
 
-1. Install ESPHome e.g. `docker pull esphome/esphome` (Tested and working upto v2022.11.5 - there are some issues with v2022.12.* and v2022.2.* bootlooping)
+1. Install ESPHome e.g. `docker pull esphome/esphome` (Tested and working upto v2024.7.1)
 2. Copy `default-template.yaml`, `testunit.yaml` and `secrets.yaml` to your ESPHome folder e.g. on HomeAssistant this is `/config/esphome/`
 3. Configure your `secrets.yaml`
 4. Connect device via USB to your ESPHome host. Install firmware. Click the dropdown next to testunit and install. N.B. Do not install the default-template it will fail (it is only the template configuration). N.B. The device should automatically reboot into CDC mode to receive the firmware however if it does not you may need to hold the IO0 button down while pushing the EN button (the two black buttons on the right of the PCB).
