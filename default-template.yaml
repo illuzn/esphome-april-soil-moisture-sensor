@@ -31,14 +31,22 @@ wifi:
 
 # Set up the minimum and maximum values for calculating moisture %
 globals:
-   - id: minimumRawValue
-     type: float
-     restore_value: no
-     initial_value: $minimum_raw_value
-   - id: maximumRawValue
-     type: float
-     restore_value: no
-     initial_value: $maximum_raw_value
+  - id: minimumRawValue
+    type: float
+    restore_value: no
+    initial_value: $minimum_raw_value
+  - id: maximumRawValue
+    type: float
+    restore_value: no
+    initial_value: $maximum_raw_value
+  - id: temperatureOffset
+    type: float
+    restore_value: no
+    initial_value: $temperature_offset
+i2c:
+  sda: 08
+  scl: 10
+  scan: false
 
 sensor:
   - platform: adc
@@ -105,8 +113,8 @@ sensor:
       if (x > id(maximumRawValue)) {
         x = id(maximumRawValue);
       }
-      float z = id(minimumRawValue) - id(maximumRawValue);
-      float y = (x - id(minimumRawValue)) / z * 100;
+      float z = id(maximumRawValue) - id(minimumRawValue);
+      float y = 100-((x - id(minimumRawValue)) / z * 100);
       return y;
 
 # average over 5 readings to smooth
@@ -126,7 +134,25 @@ sensor:
         send_every: 5
         send_first_at: 5
         quantile: 0.9
-        
+
+  - platform: tmp102
+    id: "rTemperature"
+    address: 0x48
+    update_interval: 5s
+    entity_category: diagnostic
+    name: "Raw Temperature"
+    disabled_by_default: true
+
+  - platform: template
+    name: "Temperature"
+    id: "aTemperature"
+    unit_of_measurement: "°C"
+    update_interval: 5s
+    state_class: "Measurement"
+    icon: "mdi:water-percent"
+    accuracy_decimals: 1
+    lambda: |-
+      return id(rTemperature).state + id(temperatureOffset);
 
 output:
   - platform: ledc
