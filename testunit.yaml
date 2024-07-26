@@ -10,3 +10,6 @@ substitutions:
   moisture_update_interval: '5s'
   
 <<: !include default-template.yaml
+
+# Uncomment to enable the http portal (only available during run_duration and increases power consumption)
+#<<: !include http-portal.yaml

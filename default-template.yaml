@@ -181,7 +181,7 @@ interval:
       - component.update: iMoisture
       - component.update: aMoisture
       - output.turn_off: moisture_gen
-      
+
 deep_sleep:
   run_duration:
     default: $run_duration

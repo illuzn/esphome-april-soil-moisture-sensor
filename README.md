@@ -61,6 +61,7 @@ Based upon my limited testing, here are my observations regarding power consumpt
 - Deep Sleep: ~0.1mA
 - Initial wake up from Deep Sleep: ~80mA
 - Idle (on but not updating any sensors): ~25mA
+- Idle (http portal enabled): 
 - Updating sensors (except moisture): ~50mA
 - Updating moisture levels: ~80mA
 
