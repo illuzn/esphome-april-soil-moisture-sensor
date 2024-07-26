@@ -9,7 +9,7 @@ esp32:
 
 # Enable logging
 logger:
-  level: verbose
+  level: DEBUG
 
 # Enable Home Assistant API
 api:
@@ -51,17 +51,21 @@ i2c:
 sensor:
   - platform: adc
     pin: 7
-    attenuation: 11dB
+    attenuation: 12dB
     raw: true
     id: "vbatt"
     name: "Battery Voltage"
-    update_interval: 30s
+    update_interval: $battery_update_interval
     disabled_by_default: true
     device_class: "voltage"
     state_class: "measurement"
     icon: "mdi:battery-outline"
     accuracy_decimals: 2
     entity_category: "diagnostic"
+    on_value:
+      then:
+        - component.update: pbatt
+
 
 # derive battery percentage 3300mV=0%, 3950mV=100%
   - platform: template
@@ -76,7 +80,8 @@ sensor:
       float y = (x - 3300) / 650 * 100;
       return y;
     name: "Battery Percentage"
-    update_interval: 5s
+    id: "pbatt"
+    update_interval: never
     unit_of_measurement: "%"
     device_class: "battery"
     state_class: "measurement"
@@ -122,7 +127,7 @@ sensor:
     name: "Moisture Level"
     id: "aMoisture"
     unit_of_measurement: "%"
-    update_interval: 5s
+    update_interval: never
     state_class: "Measurement"
     icon: "mdi:water-percent"
     accuracy_decimals: 0
@@ -138,16 +143,19 @@ sensor:
   - platform: tmp102
     id: "rTemperature"
     address: 0x48
-    update_interval: 5s
+    update_interval: $temperature_update_interval
     entity_category: diagnostic
     name: "Raw Temperature"
     disabled_by_default: true
+    on_value:
+      then:
+        - component.update: aTemperature
 
   - platform: template
     name: "Temperature"
     id: "aTemperature"
     unit_of_measurement: "°C"
-    update_interval: 5s
+    update_interval: never
     state_class: "Measurement"
     icon: "mdi:water-percent"
     accuracy_decimals: 1
@@ -161,7 +169,8 @@ output:
     id: moisture_gen
 
 interval:
-  - interval: 1500ms
+  - interval: $moisture_update_interval
+
     then:
       - output.turn_on: moisture_gen
       - output.set_level:

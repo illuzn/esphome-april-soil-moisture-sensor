@@ -55,6 +55,17 @@ Finally, the battery % will not be accurate when you have the device charging. T
 3. Calibrate the moisture reading with battery voltage. Theoretically the lower the voltage the lower the moisture reading.
 4. Automate OTA updates to the device. This isn't a priority for me since the device is mostly set and forget.
 
+## Power Consumption
+
+Based upon my limited testing, here are my observations regarding power consumption:
+- Deep Sleep:
+- Initial wake up from Deep Sleep: ~80mA
+- Idle (on but not updating any sensors): ~25mA
+- Updating sensors (except moisture): ~50mA
+- Updating moisture levels: ~80mA
+
+It can be seen that updating moisture levels constantly would consume the entire battery within 4-5 hours. I use these sensors largely as set and forget (except every 6 months when I need to charge them) - accordingly, I recommend using sensible run/ deep sleep times and sensor update times (battery and temperature could be updated only once every 20s so that you only get those a few times when the device is awake.)
+
 ## Upstream Issues
 
 If you are messing with the yaml configurations outside of changing the presets in `testunit.yaml` and `secrets.yaml` you may encounter some build errors. This appears to be an upstream issue in ESPHome that can be resolved using the "Clean Build Files".
