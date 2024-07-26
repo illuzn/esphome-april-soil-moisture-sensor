@@ -58,7 +58,7 @@ Finally, the battery % will not be accurate when you have the device charging. T
 ## Power Consumption
 
 Based upon my limited testing, here are my observations regarding power consumption:
-- Deep Sleep:
+- Deep Sleep: ~0.1mA
 - Initial wake up from Deep Sleep: ~80mA
 - Idle (on but not updating any sensors): ~25mA
 - Updating sensors (except moisture): ~50mA
