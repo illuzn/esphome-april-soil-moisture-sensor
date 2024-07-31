@@ -82,7 +82,7 @@ It can be seen that updating moisture levels constantly would consume the entire
 
 If you are messing with the yaml configurations outside of changing the presets in `testunit.yaml` and `secrets.yaml` you may encounter some build errors. This appears to be an upstream issue in ESPHome that can be resolved using the "Clean Build Files".
 
-~~This build will fail on ARM architectures (e.g. Raspberry Pi) because the upstream esp-idf in platformio hasn't been built for AArch64 as of writing (February 23).~~As of ESPHome 2023.10.6 (at the latest), this builds correctly on AArch64. I have not updated my soil sensors though because there is no need to do so.
+~~This build will fail on ARM architectures (e.g. Raspberry Pi) because the upstream esp-idf in platformio hasn't been built for AArch64 as of writing (February 23).~~ As of ESPHome 2023.10.6 (at the latest), this builds correctly on AArch64. I have not updated my soil sensors though because there is no need to do so.
 
 ## Acknowledgements
 
