@@ -2,6 +2,19 @@
 
 This repository is an ESPHome configuration for the [April Soil Moisture Sensor](https://wiki.aprbrother.com/en/april_soil_moisture_sensor.html). This is primarily designed to work with HomeAssistant; however with a little tweaking it can report anywhere that ESPHome is able to report.
 
+## Table of Contents
+
+[Goals](#goals)<br>
+[Files](#files)<br>
+[Usage](#usage)<br>
+[Operation](#operation)<br>
+[Recommendations](#recommendations)<br>
+[Theory of Operation](theory.md)<br>
+[To Do](#to-do)<br>
+[Power Consumption](#power-consumption)<br>
+[Upstream Issues](#upstream-issues)<br>
+[Acknowledgements](#acknowledgements)<br>
+
 ## Goals
 
 The primary goals of this project are:
@@ -50,10 +63,9 @@ Finally, the battery % will not be accurate when you have the device charging. T
 
 ## To do
 
-1. Enable the temperature sensor.
-2. Calibrate the moisture reading with temperature.
-3. Calibrate the moisture reading with battery voltage. Theoretically the lower the voltage the lower the moisture reading.
-4. Automate OTA updates to the device. This isn't a priority for me since the device is mostly set and forget.
+1. Calibrate the moisture reading with temperature.
+2. Calibrate the moisture reading with battery voltage. Theoretically the lower the voltage the lower the moisture reading.
+3. Automate OTA updates to the device. This isn't a priority for me since the device is mostly set and forget.
 
 ## Power Consumption
 
